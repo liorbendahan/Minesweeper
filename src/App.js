@@ -48,8 +48,12 @@ function App() {
       <div className="big-square">
           {Array.from(matrixSquare).map((row,index) => 
           <div className= "rows" key={index}>{Array.from(row).map(((element,index) => 
-            <Square key={index} hasBomb={element.hasBomb} bombsNearby={element.bombsNearby}
+            <Square key={index} isRevealed={element.isRevealed}
+             hasMine={element.hasMine} bombsNearby={element.bombsNearby}
              index={element.index}/>))}</div>)}
+      </div>
+      <div className="refresh-button">
+        <input type='submit' value="Refresh" onClick={createTable}/>
       </div>
 
     </div>

@@ -15,7 +15,6 @@ export function create(columns,rows) {
                 hasMine: false,
                 hasFlag: false,
                 bombsNearby: 0,
-                status: "D",
                 isRevealed: false})
             index++;
         }
@@ -23,16 +22,19 @@ export function create(columns,rows) {
     }
     return matrix;
 }
-
+function generateRandomInteger(max) {
+    return Math.floor(Math.random() * max) + 1;
+}
 export function addMines(matrix,columns, number) {   
     let numberOfSquares = matrix.length*columns;
-    let random = 0;
     //Here we create a array of numbers wich matrix indexes will have a bomb.
     while (arrayOfBombs.length < number) {
-        random = Math.floor(Math.random() * numberOfSquares) + 1;
+        let random = generateRandomInteger(numberOfSquares)
         if (arrayOfBombs.indexOf(random) === -1) {
             arrayOfBombs.push(random);
+            random = 0;
         }
+        random = 0;
     }
     console.log("Array of bombs: " + arrayOfBombs)
     let squareIndex;
