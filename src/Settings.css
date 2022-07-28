@@ -1,0 +1,53 @@
+
+.container-settings {
+    width: 50%;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    margin-left: 25rem;
+    display: block;
+    flex-direction:column;
+    flex-wrap: wrap;
+    border-radius: 12px;
+    background: linear-gradient(90deg, white, white 100%);
+}
+
+.text h2 {
+    color:blueviolet;
+    margin-left: 9rem;
+    margin-bottom: 1rem;
+    padding-top: 10px;
+    font-family: "Mochiy Pop One";
+}
+.input input {
+    width: 30%;
+    outline: none;
+    height: 35px;
+    font-size: 18px;
+    margin: 5px;
+    margin-left: 15rem;
+    border-radius: 4px;
+    color: #000000;
+    background-color: #ffa697;
+    font-family: 'Quicksand';
+    border:none;
+    position: relative;
+    padding: 0px 20px; 
+} 
+.button-create input {
+    width: 20%;
+    height: 30px;
+    font-size: 20px;
+    margin-left: 17.5rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 2px;
+    border-bottom: 1;
+    color: #ffffff;
+    background-color: #ffa697;
+    border:none;
+}
+.error-message p {
+    margin-left: 12rem;
+    font-family: 'Quicksand';
+    padding-bottom: 7px;
+}

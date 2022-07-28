@@ -1,5 +1,4 @@
 let arrayOfBombs = [];
-
 export function create(columns,rows) {
     //Here we create a very beginning matrix of squares with defaults values.
     let matrix = []
@@ -22,9 +21,11 @@ export function create(columns,rows) {
     }
     return matrix;
 }
+
 function generateRandomInteger(max) {
     return Math.floor(Math.random() * max) + 1;
 }
+
 export function addMines(matrix,columns, number) {   
     let numberOfSquares = matrix.length*columns;
     //Here we create a array of numbers wich matrix indexes will have a bomb.
@@ -32,7 +33,6 @@ export function addMines(matrix,columns, number) {
         let random = generateRandomInteger(numberOfSquares)
         if (arrayOfBombs.indexOf(random) === -1) {
             arrayOfBombs.push(random);
-            random = 0;
         }
         random = 0;
     }

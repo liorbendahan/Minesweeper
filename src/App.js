@@ -1,20 +1,19 @@
 import './App.css';
+import './Square.css';
 import { useState, useEffect } from 'react';
 import Square from './components/Square';
-import {create, addMines, addNumberOfBombsNearby, checkWhosNearby} from './createTable';
+import Settings from './components/Settings';
+import {create, addMines, addNumberOfBombsNearby} from './createTable';
 
 
 function App() {
   const [matrixSquare, setMatrixSquare] = useState([]);
-  const [columns, setColumns] = useState('');
-  const [rows, setRows] = useState('');
-  const [mines, setMines] = useState('');
-  
-  function createTable(e) {
+  const [gameStarted, setGameStarted] = useState(false);
+
+  const createTable = (columns,rows,mines) => {
     /*In this function we will create our table,
     First creating a default matrix without any true values, and then adding
     the bombs, and the number of bombs nearby ect... */
-    e.preventDefault();
     //create first the table square with all the default values.
     let matrix = create(columns,rows)
     //then we add the bombs randomally.
@@ -23,27 +22,14 @@ function App() {
     addNumberOfBombsNearby(matrix, columns,rows)
     console.log("Created new table")
     setMatrixSquare(matrix)
+    setGameStarted(true)
   }
 
   return (
-    <div className="App background ">
+    <div className="App background title ">
+      <h1 className="title">Minesweeper</h1>
 
-      <form onSubmit={createTable}>
-      <div className="input">
-      <input type="text" 
-         placeholder="Enter Rows" value={rows} 
-         onChange={(e) => setRows(Number(e.target.value))}/>
-      </div>
-      <div className="input">
-      <input type="text" 
-        placeholder="Enter Columns" value={columns} 
-        onChange={(e) => setColumns(Number(e.target.value))}/>
-      <input type="text" 
-        placeholder="Enter Number of Mines" value={mines} 
-        onChange={(e) => setMines(Number(e.target.value))}/>
-      </div>
-      <button>Press me</button>
-      </form>
+      <Settings sendParams={createTable}/>
 
       <div className="big-square">
           {Array.from(matrixSquare).map((row,index) => 
@@ -51,9 +37,6 @@ function App() {
             <Square key={index} isRevealed={element.isRevealed}
              hasMine={element.hasMine} bombsNearby={element.bombsNearby}
              index={element.index}/>))}</div>)}
-      </div>
-      <div className="refresh-button">
-        <input type='submit' value="Refresh" onClick={createTable}/>
       </div>
 
     </div>

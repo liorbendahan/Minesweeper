@@ -2,9 +2,9 @@ import React from 'react'
 
 const Square = ({index,isRevealed, hasMine, bombsNearby}) => {
   return (
-    <div className='square-container status'>
-      {isRevealed === true ? (<h1>{bombsNearby}</h1>) :
-      (<h1>{bombsNearby}</h1>)}
+    <div className='square-container'>
+      {isRevealed === true ? (<h2>{bombsNearby}</h2>) :
+      (<h2>{bombsNearby}</h2>)}
     </div>
   )
 }
