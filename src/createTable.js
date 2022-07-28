@@ -1,4 +1,5 @@
 let arrayOfBombs = [];
+
 export function create(columns,rows) {
     //Here we create a very beginning matrix of squares with defaults values.
     let matrix = []
@@ -23,15 +24,19 @@ export function create(columns,rows) {
 }
 
 function generateRandomInteger(max) {
+    /* just a simple random fuction to get a random number between 0 and max */
     return Math.floor(Math.random() * max) + 1;
 }
 
-export function addMines(matrix,columns, number) {   
+export function addMines(matrix,columns, number ,index) {  
+    /* Here we will be adding the mines randomally to the matrix,
+    without incluiding the index parameter who is the square clicked by the user in the first time */
     let numberOfSquares = matrix.length*columns;
-    //Here we create a array of numbers wich matrix indexes will have a bomb.
+    arrayOfBombs = [];
+    //Here we create an array of numbers that the indexes of the matrix will have a bomb.
     while (arrayOfBombs.length < number) {
         let random = generateRandomInteger(numberOfSquares)
-        if (arrayOfBombs.indexOf(random) === -1) {
+        if (arrayOfBombs.indexOf(random) === -1 && random !== index) {
             arrayOfBombs.push(random);
         }
         random = 0;
@@ -53,7 +58,8 @@ export function addMines(matrix,columns, number) {
 }
 
 export function addNumberOfBombsNearby(matrix,columns,rows) {
-    //here we are going to add all the number of bombs nearby!
+    /* here we are going to add the number of bombs nearby to every square
+    in the matrix */
     let arrayNearby = [];
     let allMatrixInArray = makeMatrixAnArray(matrix);
     let currentSquare;
@@ -62,12 +68,13 @@ export function addNumberOfBombsNearby(matrix,columns,rows) {
     for (var i = 0; i < arrayOfBombs.length; i++) {
         /*Then, we need to call a fucntion for each index that have a bomb to get 
         the indexes of the squares that are nearby */
+        console.log(arrayOfBombs[i]);
         arrayNearby = checkWhosNearby(arrayOfBombs[i],columns,rows);
         //console.log(arrayNearby, arrayOfBombs[i])
         /*Then, we run in the new array and for each index in the matrix we 
         do a ++ in the bombsNearby value */
         for (var j = 0; j < arrayNearby.length; j++) {
-            currentSquare = allMatrixInArray.find(element => element.index == arrayNearby[j])
+            currentSquare = allMatrixInArray.find(element => element.index === arrayNearby[j])
             if (matrix[currentSquare.x-1][currentSquare.y-1].hasMine === false) {
                 matrix[currentSquare.x-1][currentSquare.y-1].bombsNearby++;
             }
@@ -88,8 +95,8 @@ export function checkWhosNearby(number,columns,rows) {
     if (index2 > 0) {
         arrayNearby.push(index2);
     }
-
-    let index3 = number -rows+1;
+    
+    let index3 = index2 +1;
     if ((index3 > 0) && (number % columns !== 0)) {
         arrayNearby.push(index3);
     }
@@ -104,12 +111,12 @@ export function checkWhosNearby(number,columns,rows) {
         arrayNearby.push(index5);
     }
     
-    let index6 = number +rows-1;
+    let index7 = number + columns;
+    let index6 = index7-1;
     if (((number-1) % columns !== 0) && (index6 <= rows*columns)) {
        arrayNearby.push(index6);
     }
 
-    let index7 = number + columns;
     if (index7 <= (columns*rows)) {
         arrayNearby.push(index7);
     }
@@ -121,7 +128,7 @@ export function checkWhosNearby(number,columns,rows) {
     return arrayNearby;
 }
 
-function makeMatrixAnArray(matrix) {
+export function makeMatrixAnArray(matrix) {
     /*This function just gets the matrix and returns a single
     array that contains all the elements of the matrix*/
     let newArray = [];

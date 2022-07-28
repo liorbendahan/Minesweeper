@@ -7,7 +7,7 @@
 }
 
 .background {
-    background: linear-gradient(145deg, #4d2ef4,#a76ae0 80%);
+    background: linear-gradient(145deg, #f0f0f0,#f0f0f0 80%);
     min-height: 720px;
 }
 .title h1{
@@ -15,7 +15,17 @@
   padding-top: 1rem;
   display: flex;
   font-size: 50px;
-  color: #fff;
+  color: #ff4075;
   justify-content: center;
+  font-family: "Mochiy Pop One";
+}
+.big-square {
+  justify-content: center;
+}
+.game-over h3{
+  color:#2e3543;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
   font-family: "Mochiy Pop One";
 }

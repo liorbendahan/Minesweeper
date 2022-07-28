@@ -1,8 +1,5 @@
 
-.big-square {
-    justify-content: center;
-    padding: 30px;
-}
+
 .square-container{
     display: flex;
     background-color: #ffff;
@@ -10,9 +7,18 @@
     height: 50px;
     justify-content: center;
     align-items: center;
-    border: 2px solid rgb(138, 68, 3);
+    border: 2px solid #000000;
 }
 .rows {
     display: flex;
     justify-content: center;
+}
+
+.square-revealed {
+    color: #ffff;
+    background-color: #ff4075;
+}
+.square-not-revealed {
+    color: #ffff;
+    background-color: #2e3543;
 }

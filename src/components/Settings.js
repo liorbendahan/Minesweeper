@@ -1,6 +1,6 @@
 import React from 'react'
 import '../Settings.css'
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 const Settings = ({sendParams}) => {
   const [columns, setColumns] = useState('');
@@ -53,7 +53,7 @@ const Settings = ({sendParams}) => {
   return (
     <div className="container-settings text">
       <form onSubmit={onSubmit}>
-        <h2>Please fill the next settings to play:</h2>
+        <h3>Please fill the next settings to play</h3>
       <div className="input">
         <input type="text" 
             placeholder="Enter Rows" value={rows} 

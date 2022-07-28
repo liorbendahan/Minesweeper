@@ -2,8 +2,8 @@
 .container-settings {
     width: 50%;
     margin-top: 1rem;
-    margin-bottom: 2rem;
-    margin-left: 25rem;
+    margin-bottom: 1rem;
+    margin-left: 24rem;
     display: block;
     flex-direction:column;
     flex-wrap: wrap;
@@ -11,9 +11,10 @@
     background: linear-gradient(90deg, white, white 100%);
 }
 
-.text h2 {
-    color:blueviolet;
-    margin-left: 9rem;
+.text h3 {
+    color:#2e3543;
+    display: flex;
+    justify-content: center;
     margin-bottom: 1rem;
     padding-top: 10px;
     font-family: "Mochiy Pop One";
@@ -24,10 +25,10 @@
     height: 35px;
     font-size: 18px;
     margin: 5px;
-    margin-left: 15rem;
+    margin-left: 16rem;
     border-radius: 4px;
-    color: #000000;
-    background-color: #ffa697;
+    color: #ffff;
+    background-color: #2e3543;
     font-family: 'Quicksand';
     border:none;
     position: relative;
@@ -37,13 +38,12 @@
     width: 20%;
     height: 30px;
     font-size: 20px;
-    margin-left: 17.5rem;
+    margin-left: 18.3rem;
     margin-top: 1rem;
     margin-bottom: 1rem;
-    border-radius: 2px;
-    border-bottom: 1;
+    border-radius: 10px;
     color: #ffffff;
-    background-color: #ffa697;
+    background-color: #ff4075;
     border:none;
 }
 .error-message p {
