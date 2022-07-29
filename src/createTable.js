@@ -1,4 +1,4 @@
-let arrayOfBombs = [];
+export let arrayOfBombs = [];
 
 export function create(columns,rows) {
     //Here we create a very beginning matrix of squares with defaults values.
@@ -68,15 +68,16 @@ export function addNumberOfBombsNearby(matrix,columns,rows) {
     for (var i = 0; i < arrayOfBombs.length; i++) {
         /*Then, we need to call a fucntion for each index that have a bomb to get 
         the indexes of the squares that are nearby */
-        console.log(arrayOfBombs[i]);
         arrayNearby = checkWhosNearby(arrayOfBombs[i],columns,rows);
         //console.log(arrayNearby, arrayOfBombs[i])
         /*Then, we run in the new array and for each index in the matrix we 
         do a ++ in the bombsNearby value */
         for (var j = 0; j < arrayNearby.length; j++) {
-            currentSquare = allMatrixInArray.find(element => element.index === arrayNearby[j])
-            if (matrix[currentSquare.x-1][currentSquare.y-1].hasMine === false) {
-                matrix[currentSquare.x-1][currentSquare.y-1].bombsNearby++;
+            if (arrayNearby[j] !== 0 ) {
+                currentSquare = allMatrixInArray.find(element => element.index === arrayNearby[j])
+                if (matrix[currentSquare.x-1][currentSquare.y-1].hasMine === false) {
+                    matrix[currentSquare.x-1][currentSquare.y-1].bombsNearby++;
+                }
             }
         }
     }
@@ -84,7 +85,8 @@ export function addNumberOfBombsNearby(matrix,columns,rows) {
 
 export function checkWhosNearby(number,columns,rows) {
     /*Gets an index and returns an array of all the nearby
-    aquares indexes in the matrix */
+    aquares indexes in the matrix , if in the 8 squares possible there isnt a number nearby (wall),
+    we will put 0 inside the array.*/
     let arrayNearby = [];
     let index1 = number -columns - 1;
     if ((index1 > 0) && (index1 % columns !== 0)) {
@@ -125,6 +127,7 @@ export function checkWhosNearby(number,columns,rows) {
     if ((number % columns !== 0) && (index8 <= rows*columns)) {
         arrayNearby.push(index8);
     }
+
     return arrayNearby;
 }
 
