@@ -15,10 +15,25 @@
 }
 
 .square-revealed {
-    color: #ffff;
-    background-color: #ff4075;
+    color: #2e3543;
+    background-color: #ffff;
 }
 .square-not-revealed {
     color: #ffff;
     background-color: #2e3543;
+}
+.mine {
+    color: #2e3543;
+    background-color: #ff719a;
+    font-size: 25px;
+    padding-left: 2px;
+}
+.not-zero {
+    color: #000000;
+}
+
+.flags {
+    color: #ffffff;
+    font-size: 25px;
+    padding-left: 2px;
 }

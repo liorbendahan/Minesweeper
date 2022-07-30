@@ -1,10 +1,12 @@
 import React from 'react'
-
-const Square = ({index,isRevealed, hasMine, bombsNearby ,onClick}) => {
+import { FaBomb, FaFlag } from "react-icons/fa";
+const Square = ({index, isRevealed, hasMine, hasFlag, bombsNearby ,onClick, onRightClick}) => {
   return (
-    <div onClick={onClick}>
-      {isRevealed === true ? (<div className="square-container square-revealed"><h2>{bombsNearby}</h2></div>) :
-      (<div className="square-container square-not-revealed"><h2>{}</h2></div>)}
+    <div onClick={onClick} onContextMenu={onRightClick}>
+      {isRevealed === true ? (hasMine === true ? (<div className="square-container square-revealed mine"><FaBomb /></div>):
+       (<div className="square-container square-revealed">{bombsNearby != 0 ? (<h2 className="not-zero">{bombsNearby}</h2>) : (<h2>{}</h2>)}</div>)) :
+      (hasFlag === true ? (<div className="square-container square-not-revealed flags"><h2>{<FaFlag />}</h2></div>):
+      (<div className="square-container square-not-revealed"><h2>{}</h2></div>))}
     </div>
   )
 }

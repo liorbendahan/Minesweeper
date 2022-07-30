@@ -47,7 +47,10 @@
     border:none;
 }
 .error-message p {
-    margin-left: 12rem;
-    font-family: 'Quicksand';
+    display: flex;
+    font-size: 13px;
+    justify-content: center;
+    padding-right: 35px;
     padding-bottom: 7px;
+    font-family: "Mochiy Pop One";
 }

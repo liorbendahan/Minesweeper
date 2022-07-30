@@ -21,6 +21,8 @@
 }
 .big-square {
   justify-content: center;
+  padding-bottom: 1rem;
+  
 }
 .game-over h3{
   color:#2e3543;

@@ -31,10 +31,12 @@ export function handleClick(index, matrix, columns, rows) {
         for (let y = 0; y < columns; y++) {
             if(newMatrix[x][y].index === index && newMatrix[x][y].bombsNearby !== 0) {
                 newMatrix[x][y].isRevealed = true;
+                newMatrix[x][y].hasFlag = false;
             }
             if(newMatrix[x][y].index === index && newMatrix[x][y].bombsNearby === 0) {
                 //recursive(index, newMatrix, columns, rows)
                 newMatrix[x][y].isRevealed = true;
+                newMatrix[x][y].hasFlag = false;
                 recursive(revealedAndReturn(index,newMatrix, columns, rows),newMatrix, columns, rows);
             }
         }
@@ -64,10 +66,12 @@ function revealedAndReturn(index,newMatrix, columns, rows) {
                      && newMatrix[x][y].isRevealed === false){
                     newArray.push(newMatrix[x][y])
                     newMatrix[x][y].isRevealed = true;
+                    newMatrix[x][y].hasFlag = false;
                 }
                 if (newMatrix[x][y].index === array[z] && newMatrix[x][y].bombsNearby !== 0
                 && newMatrix[x][y].isRevealed === false) {
                     newMatrix[x][y].isRevealed = true;
+                    newMatrix[x][y].hasFlag = false;
                 }
             }
         }
@@ -94,9 +98,42 @@ export function checkIfWon(matrix, columns){
 }
 
 export function copyMatrix(matrix) {
-    /* just a simple function that copy our matrix */
+    /* just a simple function that copies our matrix */
     let newMatrix = [];
     for (let i = 0; i < matrix.length; i++)
         newMatrix[i] = matrix[i].slice();
     return newMatrix;
+}
+
+export function hasAndHandleFlag(index, matrix, columns) {
+    /* This function will put or delete a flag if it is or isnt in the square clicked
+    and will return true if we created a flag or false if we deleted one*/
+    for (let x = 0; x < matrix.length ; x++) {
+        for (let y = 0; y < columns; y++) {
+            if(matrix[x][y].index === index) {
+                if (matrix[x][y].hasFlag === false && matrix[x][y].isRevealed === false) {
+                    matrix[x][y].hasFlag = true;
+                    return true;
+                }
+                if (matrix[x][y].hasFlag === true && matrix[x][y].isRevealed === false) {
+                    matrix[x][y].hasFlag = false;
+                    return false;
+                }
+            }
+        }
+    } 
+    return null;
+}
+
+export function countRemainingFlags(matrix, columns) {
+    /* This function will count the number of flags there are in the table and returns it */
+    let count = 0;
+    for (let x = 0; x < matrix.length ; x++) {
+        for (let y = 0; y < columns; y++) {
+            if (matrix[x][y].hasFlag === true ) {
+                count++;
+            }
+        }
+    }
+    return count;
 }
