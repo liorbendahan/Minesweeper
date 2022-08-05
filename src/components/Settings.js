@@ -20,7 +20,7 @@ const Settings = ({sendParams}) => {
     going to limit them */
     e.preventDefault();
     let numberOfSquares = columns*rows;
-    if (columns >= 100 || rows >= 100 || mines >= 200) {
+    if (columns >= 100 || rows >= 100) {
       setError3(true);
       await sleep(4000);
       setError3(false);
